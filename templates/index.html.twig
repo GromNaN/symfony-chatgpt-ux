@@ -1,0 +1,14 @@
+{% block body %}
+    <ul>
+        {% for message in messages|filter(message => message.role != 'system') %}
+            <h3>{{ message.role }}</h3>
+            <p>{{ message.content }}</p>
+        {% endfor %}
+    </ul>
+
+    <form class="p-4 flex space-x-4 justify-center items-center" action="/" method="post">
+        <label for="message">Ask your question :</label>
+        <input id="message" type="text" name="message" autocomplete="off" class="border rounded-md  p-2 flex-1" />
+        <a class="bg-gray-800 text-white p-2 rounded-md" href="/reset">Reset Conversation</a>
+    </form>
+{% endblock %}
