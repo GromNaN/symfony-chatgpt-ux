@@ -14,7 +14,7 @@ use Symfony\Component\Routing\Annotation\Route;
 class ChatController
 {
     public function __construct(
-        private Client $openai,
+        private readonly Client $openai,
     )
     {
     }
@@ -23,8 +23,12 @@ class ChatController
     #[Template('index.html.twig')]
     public function indexAction(Request $request): array
     {
+        if ($request->query->has('reset')) {
+            $request->getSession()->remove('messages');
+        }
+
         return [
-            'messages' => $request->getSession()->get('messages'),
+            'messages' => $request->getSession()->get('messages', []),
         ];
     }
 
