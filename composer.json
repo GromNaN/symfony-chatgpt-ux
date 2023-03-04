@@ -11,15 +11,18 @@
         "ext-ctype": "*",
         "ext-iconv": "*",
         "openai-php/symfony": "@dev",
+        "symfony/clock": "6.2.*",
         "symfony/console": "6.2.*",
         "symfony/dotenv": "6.2.*",
         "symfony/flex": "^2",
         "symfony/framework-bundle": "6.2.*",
         "symfony/runtime": "6.2.*",
         "symfony/twig-bundle": "6.2.*",
+        "symfony/ux-turbo": "^2.7",
         "symfony/webpack-encore-bundle": "^1.16",
         "symfony/yaml": "6.2.*",
         "twig/extra-bundle": "^2.12|^3.0",
+        "twig/intl-extra": "^3.5",
         "twig/twig": "^2.12|^3.0"
     },
     "config": {
