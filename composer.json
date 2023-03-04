@@ -19,6 +19,7 @@
         "symfony/runtime": "6.2.*",
         "symfony/twig-bundle": "6.2.*",
         "symfony/ux-turbo": "^2.7",
+        "symfony/ux-twig-component": "^2.7",
         "symfony/webpack-encore-bundle": "^1.16",
         "symfony/yaml": "6.2.*",
         "twig/extra-bundle": "^2.12|^3.0",
@@ -75,6 +76,7 @@
     },
     "require-dev": {
         "symfony/debug-bundle": "6.2.*",
+        "symfony/maker-bundle": "^1.48",
         "symfony/monolog-bundle": "^3.0",
         "symfony/stopwatch": "6.2.*",
         "symfony/web-profiler-bundle": "6.2.*"

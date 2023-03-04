@@ -255,25 +255,9 @@
 
                                     <div class="modal-body">
                                         <div class="msg-body">
-                                            <ul>
-                                                {% for message in messages|filter(message => message.timestamp is defined) %}
-                                                    {% if timestamp is not defined or (timestamp|format_date) != (message.timestamp|format_date)  %}
-                                                        <li>
-                                                            <div class="divider">
-                                                                <h6>{{ message.timestamp|format_date }}</h6>
-                                                            </div>
-                                                        </li>
-                                                    {% endif %}
-                                                    {% set timestamp = message.timestamp %}
-                                                    <li class="{{ message.role }}">
-                                                        <p> {{ message.content }} </p>
-                                                        <span class="time">{{ message.timestamp|format_time }}</span>
-                                                    </li>
-                                                {% endfor %}
-                                            </ul>
+                                            {{ component('chat_messages', { messages }) }}
                                         </div>
                                     </div>
-
 
                                     <div class="send-box">
                                         <form action="/" method="post">

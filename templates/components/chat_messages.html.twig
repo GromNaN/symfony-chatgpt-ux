@@ -1,0 +1,17 @@
+<ul>
+    {% for message in messages %}
+        {% if timestamp is not defined or (timestamp|format_date) != (message.timestamp|format_date)  %}
+            <li>
+                <div class="divider">
+                    <h6>{{ message.timestamp|format_date }}</h6>
+                </div>
+            </li>
+        {% endif %}
+
+        {% set timestamp = message.timestamp %}
+        <li class="role-{{ message.role }}">
+            <p> {{ message.content }} </p>
+            <span class="time">{{ message.timestamp|format_time }}</span>
+        </li>
+    {% endfor %}
+</ul>

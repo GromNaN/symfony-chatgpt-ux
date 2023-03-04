@@ -217,13 +217,13 @@ a.add img {
     margin: 15px 0;
 }
 
-.msg-body ul li.user {
+.msg-body ul li.role-user {
     display: block;
     width: 100%;
     position: relative;
 }
 
-.msg-body ul li.user:before {
+.msg-body ul li.role-user:before {
     display: block;
     clear: both;
     content: '';
@@ -240,7 +240,7 @@ a.add img {
     transform: rotate(-37deg);
 }
 
-.msg-body ul li.user p {
+.msg-body ul li.role-user p {
     color: #000;
     font-size: 14px;
     line-height: 1.5;
@@ -254,7 +254,7 @@ a.add img {
     margin-bottom: 0;
 }
 
-.msg-body ul li.user p b {
+.msg-body ul li.role-user p b {
     display: block;
     color: #180660;
     font-size: 14px;
@@ -262,14 +262,14 @@ a.add img {
     font-weight: 500;
 }
 
-.msg-body ul li.assistant {
+.msg-body ul li.role-assistant {
     display: block;
     width: 100%;
     text-align: right;
     position: relative;
 }
 
-.msg-body ul li.assistant:before {
+.msg-body ul li.role-assistant:before {
     display: block;
     clear: both;
     content: '';
@@ -286,7 +286,7 @@ a.add img {
     transform: rotate(37deg);
 }
 
-.msg-body ul li.assistant p {
+.msg-body ul li.role-assistant p {
     color: #fff;
     font-size: 14px;
     line-height: 1.5;
@@ -300,7 +300,7 @@ a.add img {
     margin-bottom: 0;
 }
 
-.msg-body ul li.assistant p b {
+.msg-body ul li.role-assistant p b {
     display: block;
     color: #061061;
     font-size: 14px;
@@ -308,7 +308,7 @@ a.add img {
     font-weight: 500;
 }
 
-.msg-body ul li.assistant:after {
+.msg-body ul li.role-assistant:after {
     display: block;
     content: '';
     clear: both;
@@ -322,7 +322,7 @@ a.add img {
     font-weight: 400;
 }
 
-li.assistant .time {
+li.role-assistant .time {
     margin-right: 20px;
 }
 
@@ -552,14 +552,14 @@ button:focus {
     .chat-list p {
         font-size: 12px;
     }
-    .msg-body ul li.user p {
+    .msg-body ul li.role-user p {
         font-size: 13px;
         padding: 8px;
         border-bottom-left-radius: 6px;
         border-top-right-radius: 6px;
         border-bottom-right-radius: 6px;
     }
-    .msg-body ul li.assistant p {
+    .msg-body ul li.role-assistant p {
         font-size: 13px;
         padding: 8px;
         border-top-left-radius: 6px;
