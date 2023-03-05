@@ -1,18 +1,15 @@
 {
     "type": "project",
-    "license": "proprietary",
+    "license": "MIT",
     "minimum-stability": "stable",
     "prefer-stable": true,
-    "repositories": [
-        { "type":  "path", "url":  "../" }
-    ],
     "require": {
         "php": ">=8.1",
         "ext-ctype": "*",
         "ext-iconv": "*",
         "doctrine/mongodb-odm-bundle": "^4.5",
         "league/commonmark": "^2.3",
-        "openai-php/symfony": "@dev",
+        "openai-php/symfony": "dev-main",
         "symfony/clock": "6.2.*",
         "symfony/console": "6.2.*",
         "symfony/dotenv": "6.2.*",
@@ -30,6 +27,13 @@
         "twig/intl-extra": "^3.5",
         "twig/markdown-extra": "^3.5",
         "twig/twig": "^2.12|^3.0"
+    },
+    "require-dev": {
+        "symfony/debug-bundle": "6.2.*",
+        "symfony/maker-bundle": "^1.48",
+        "symfony/monolog-bundle": "^3.0",
+        "symfony/stopwatch": "6.2.*",
+        "symfony/web-profiler-bundle": "6.2.*"
     },
     "config": {
         "allow-plugins": {
@@ -78,12 +82,5 @@
             "allow-contrib": false,
             "require": "6.2.*"
         }
-    },
-    "require-dev": {
-        "symfony/debug-bundle": "6.2.*",
-        "symfony/maker-bundle": "^1.48",
-        "symfony/monolog-bundle": "^3.0",
-        "symfony/stopwatch": "6.2.*",
-        "symfony/web-profiler-bundle": "6.2.*"
     }
 }

@@ -2,8 +2,8 @@
     {% for conversation in conversations %}
     <a href="{{ path('conversation', { id: conversation.id }) }}" class="d-flex align-items-center">
         <div class="flex-shrink-0">
-            <img class="img-fluid" src="https://mehedihtml.com/chatbox/assets/img/user.png" alt="user img">
-            <span class="active"></span>
+            <img class="img-fluid" src="https://upload.wikimedia.org/wikipedia/commons/0/04/ChatGPT_logo.svg" width="45" height="45" alt="user img">
+            <!--<span class="active"></span>-->
         </div>
         <div class="flex-grow-1 ms-3">
             <h3>{{ conversation.title }}</h3>
