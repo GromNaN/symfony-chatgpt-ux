@@ -23,9 +23,11 @@
                                             <li class="nav-item" role="presentation">
                                                 <button class="nav-link active" id="Open-tab" data-bs-toggle="tab" data-bs-target="#Open" type="button" role="tab" aria-controls="Open" aria-selected="true">Open</button>
                                             </li>
+                                            {#
                                             <li class="nav-item" role="presentation">
                                                 <button class="nav-link" id="Closed-tab" data-bs-toggle="tab" data-bs-target="#Closed" type="button" role="tab" aria-controls="Closed" aria-selected="false">Closed</button>
                                             </li>
+                                            #}
                                         </ul>
                                     </div>
 
@@ -38,6 +40,7 @@
                                                     {{ component('chats_list', {conversations: lastConversations}) }}
                                                     <!-- chat-list -->
                                                 </div>
+                                                {#
                                                 <div class="tab-pane fade" id="Closed" role="tabpanel" aria-labelledby="Closed-tab">
 
                                                     <!-- chat-list -->
@@ -55,6 +58,7 @@
                                                     </div>
                                                     <!-- chat-list -->
                                                 </div>
+                                                #}
                                             </div>
 
                                         </div>
@@ -112,9 +116,9 @@
 
                                     <div class="send-box">
                                         <form action="{{ path('submit') }}" method="post">
-                                            <input type="text" class="form-control" aria-label="message…" placeholder="Write message…" name="message">
-                                            <input type="hidden" name="id" value="{{ conversation.isNew() ? '' : conversation.id }}">
-
+                                            {{ form_widget(form.message) }}
+                                            {{ form_widget(form.id) }}
+                                            {# @todo would be nice to be able to add an icon. See https://stackoverflow.com/a/31275381/450789 #}
                                             <button type="submit"><i class="fa fa-paper-plane" aria-hidden="true"></i> Send</button>
                                         </form>
                                     </div>

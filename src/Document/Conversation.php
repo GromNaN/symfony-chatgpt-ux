@@ -20,7 +20,7 @@ class Conversation
     private Collection $messages;
 
     #[Field]
-    private ?string $title = null;
+    private ?string $title;
 
     #[Field]
     private DateTimeImmutable $createdAt;

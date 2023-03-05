@@ -8,6 +8,11 @@ use Doctrine\ODM\MongoDB\DocumentManager;
 use OpenAI\Client;
 use Psr\Clock\ClockInterface;
 use Symfony\Bridge\Twig\Attribute\Template;
+use Symfony\Component\Form\Extension\Core\Type\HiddenType;
+use Symfony\Component\Form\Extension\Core\Type\SubmitType;
+use Symfony\Component\Form\Extension\Core\Type\TextType;
+use Symfony\Component\Form\FormFactoryInterface;
+use Symfony\Component\Form\FormInterface;
 use Symfony\Component\HttpFoundation\RedirectResponse;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -21,6 +26,7 @@ class ChatController
         private readonly Client $openai,
         private readonly ClockInterface $clock,
         private readonly DocumentManager $documentManager,
+        private readonly FormFactoryInterface $formFactory,
     )
     {
     }
@@ -35,6 +41,7 @@ class ChatController
             ->findBy([], ['createdAt' => 'DESC'], 20);
 
         return [
+            'form' => $this->getForm()->setData(['id' => $id])->createView(),
             'conversation' => $conversation,
             'lastConversations' => $lastConversations,
         ];
@@ -43,11 +50,20 @@ class ChatController
     #[Route('/', methods: 'POST', name: 'submit')]
     public function submitAction(Request $request): Response
     {
+        $form = $this->getForm();
+        $form->handleRequest($request);
+
+        if (!$form->isSubmitted() || !$form->isValid()) {
+            return new RedirectResponse('/');
+        }
+        /** @var array{id: string, message: string} $data */
+        $data = $form->getData();
+
         // Gets the conversation from the session
-        $conversation = $this->getConversation($request->request->get('id'));
+        $conversation = $this->getConversation($data['id']);
 
         // Adds the user's message to the conversation
-        $conversation->addMessage('user', $request->request->get('message'), $this->clock->now());
+        $conversation->addMessage('user', $data['message'], $this->clock->now());
 
         // Generates a response from OpenAI
         $response = $this->openai->chat()->create([
@@ -93,5 +109,23 @@ class ChatController
         }
 
         return $conversation;
+    }
+
+    private function getForm(): FormInterface
+    {
+        return $this->formFactory->createBuilder()
+            ->add('id', HiddenType::class)
+            ->add('message', TextType::class, [
+                'label' => false,
+                'attr' => [
+                    'placeholder' => 'Write your message…',
+                    'autocomplete' => 'off',
+                    'aria-label' => 'message',
+                ],
+            ])
+            ->add('submit', SubmitType::class, [
+                'label' => 'Send',
+            ])
+            ->getForm();
     }
 }
