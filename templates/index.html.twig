@@ -12,64 +12,10 @@
                         <!-- chatlist -->
                         <div class="chatlist">
                             <div class="modal-dialog-scrollable">
-                                <div class="modal-content">
-                                    <div class="chat-header">
-                                        <div class="msg-search">
-                                            <input type="text" class="form-control" id="inlineFormInputGroup" placeholder="Search" aria-label="search">
-                                            <a class="add" href="{{ path('index') }}"><img class="img-fluid" src="https://mehedihtml.com/chatbox/assets/img/add.svg" alt="add"></a>
-                                        </div>
-
-                                        <ul class="nav nav-tabs" id="myTab" role="tablist">
-                                            <li class="nav-item" role="presentation">
-                                                <button class="nav-link active" id="Open-tab" data-bs-toggle="tab" data-bs-target="#Open" type="button" role="tab" aria-controls="Open" aria-selected="true">Open</button>
-                                            </li>
-                                            {#
-                                            <li class="nav-item" role="presentation">
-                                                <button class="nav-link" id="Closed-tab" data-bs-toggle="tab" data-bs-target="#Closed" type="button" role="tab" aria-controls="Closed" aria-selected="false">Closed</button>
-                                            </li>
-                                            #}
-                                        </ul>
-                                    </div>
-
-                                    <div class="modal-body">
-                                        <!-- chat-list -->
-                                        <div class="chat-lists">
-                                            <div class="tab-content" id="myTabContent">
-                                                <div class="tab-pane fade show active" id="Open" role="tabpanel" aria-labelledby="Open-tab">
-                                                    <!-- chat-list -->
-                                                    {{ component('chats_list', {conversations: lastConversations}) }}
-                                                    <!-- chat-list -->
-                                                </div>
-                                                {#
-                                                <div class="tab-pane fade" id="Closed" role="tabpanel" aria-labelledby="Closed-tab">
-
-                                                    <!-- chat-list -->
-                                                    <div class="chat-list">
-                                                        <a href="#" class="d-flex align-items-center">
-                                                            <div class="flex-shrink-0">
-                                                                <img class="img-fluid" src="https://upload.wikimedia.org/wikipedia/commons/0/04/ChatGPT_logo.svg" alt="user img">
-                                                                <span class="active"></span>
-                                                            </div>
-                                                            <div class="flex-grow-1 ms-3">
-                                                                <h3>{{ conversation.title }}</h3>
-                                                                <p>OpenAI assistant</p>
-                                                            </div>
-                                                        </a>
-                                                    </div>
-                                                    <!-- chat-list -->
-                                                </div>
-                                                #}
-                                            </div>
-
-                                        </div>
-                                        <!-- chat-list -->
-                                    </div>
-                                </div>
+                                {{ component('chats_list', {class: 'modal-content'}) }}
                             </div>
                         </div>
                         <!-- chatlist -->
-
-
 
                         <!-- chatbox -->
                         <div class="chatbox">

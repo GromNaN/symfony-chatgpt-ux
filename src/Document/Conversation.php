@@ -9,8 +9,10 @@ use Doctrine\ODM\MongoDB\Mapping\Annotations\Document;
 use Doctrine\ODM\MongoDB\Mapping\Annotations\EmbedMany;
 use Doctrine\ODM\MongoDB\Mapping\Annotations\Field;
 use Doctrine\ODM\MongoDB\Mapping\Annotations\Id;
+use Doctrine\ODM\MongoDB\Mapping\Annotations\Index;
 
 #[Document(collection: 'conversations')]
+#[Index(keys: ['title' => 'text'], options: ['default_language' => 'english'])]
 class Conversation
 {
     #[Id]
@@ -20,6 +22,7 @@ class Conversation
     private Collection $messages;
 
     #[Field]
+    #[Index]
     private ?string $title = 'New conversation';
 
     #[Field]

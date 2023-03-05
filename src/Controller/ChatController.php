@@ -37,13 +37,10 @@ class ChatController
     public function indexAction(string $id = null): array
     {
         $conversation = $this->getConversation($id);
-        $lastConversations = $this->documentManager->getRepository(Conversation::class)
-            ->findBy([], ['createdAt' => 'DESC'], 20);
 
         return [
             'form' => $this->getForm()->setData(['id' => $id])->createView(),
             'conversation' => $conversation,
-            'lastConversations' => $lastConversations,
         ];
     }
 
