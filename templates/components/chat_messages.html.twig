@@ -10,7 +10,7 @@
 
         {% set timestamp = message.timestamp %}
         <li class="role-{{ message.role }}">
-            <p> {{ message.content }} </p>
+            <p>{{ message.content|nl2br }}</p>
             <span class="time">{{ message.timestamp|format_time }}</span>
         </li>
     {% endfor %}

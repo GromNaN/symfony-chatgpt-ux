@@ -10,6 +10,8 @@
         "php": ">=8.1",
         "ext-ctype": "*",
         "ext-iconv": "*",
+        "doctrine/mongodb-odm-bundle": "^4.5",
+        "league/commonmark": "^2.3",
         "openai-php/symfony": "@dev",
         "symfony/clock": "6.2.*",
         "symfony/console": "6.2.*",
@@ -24,6 +26,7 @@
         "symfony/yaml": "6.2.*",
         "twig/extra-bundle": "^2.12|^3.0",
         "twig/intl-extra": "^3.5",
+        "twig/markdown-extra": "^3.5",
         "twig/twig": "^2.12|^3.0"
     },
     "config": {

@@ -1,0 +1,14 @@
+<div class="chat-list">
+    {% for conversation in conversations %}
+    <a href="{{ path('conversation', { id: conversation.id }) }}" class="d-flex align-items-center">
+        <div class="flex-shrink-0">
+            <img class="img-fluid" src="https://mehedihtml.com/chatbox/assets/img/user.png" alt="user img">
+            <span class="active"></span>
+        </div>
+        <div class="flex-grow-1 ms-3">
+            <h3>{{ conversation.title }}</h3>
+            <p>{{ conversation.createdAt|format_datetime }}</p>
+        </div>
+    </a>
+    {% endfor %}
+</div>
