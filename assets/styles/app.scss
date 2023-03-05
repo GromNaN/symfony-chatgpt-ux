@@ -208,6 +208,11 @@ a.add img {
     margin-top: 0.125rem;
 }
 
+.chatbox .modal-body {
+    display: flex;
+    flex-direction: column-reverse;
+}
+
 .msg-body ul {
     overflow: hidden;
 }
@@ -265,7 +270,6 @@ a.add img {
 .msg-body ul li.role-assistant {
     display: block;
     width: 100%;
-    text-align: right;
     position: relative;
 }
 
@@ -298,6 +302,7 @@ a.add img {
     border-top-right-radius: 10px;
     border-bottom-left-radius: 10px;
     margin-bottom: 0;
+    width: 100%;
 }
 
 .msg-body ul li.role-assistant p b {
