@@ -3,19 +3,19 @@
 namespace App\Twig\Components;
 
 use App\Document\Conversation;
-use App\Document\Message;
 use App\Form\Model\MessageInput;
 use App\Form\Type\MessageInputType;
 use Doctrine\ODM\MongoDB\DocumentManager;
-use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\Form\FormFactoryInterface;
 use Symfony\Component\Form\FormInterface;
-use Symfony\Component\Form\FormView;
+use Symfony\UX\LiveComponent\ComponentWithFormTrait;
 use Symfony\UX\TwigComponent\Attribute\AsTwigComponent;
 
 #[AsTwigComponent('chatbox')]
 final class ChatboxComponent
 {
+    use ComponentWithFormTrait;
+
     public Conversation $conversation;
 
     public function __construct(
@@ -23,7 +23,6 @@ final class ChatboxComponent
         private readonly FormFactoryInterface $formFactory,
     )
     {
-
     }
 
     public function mount(
@@ -37,13 +36,13 @@ final class ChatboxComponent
         }
     }
 
-    public function getForm(): FormView
+    protected function instantiateForm(): FormInterface
     {
         $form = $this->formFactory->create(MessageInputType::class);
         if (!$this->conversation->isNew()) {
             $form->setData(new MessageInput(id: $this->conversation->getId()));
         }
 
-        return $form->createView();
+        return $form;
     }
 }
