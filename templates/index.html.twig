@@ -17,11 +17,13 @@
                         <!-- chatlist -->
 
                         <!-- chatbox -->
-                        <div class="chatbox">
-                            <div class="modal-dialog-scrollable">
-                                {{ component('chatbox', { class: 'modal-content', id }) }}
+                            <div class="chatbox">
+                                <div class="modal-dialog-scrollable">
+                                    <turbo-frame id="chatbox">
+                                        {{ component('chatbox', { class: 'modal-content', id }) }}
+                                    </turbo-frame>
+                                </div>
                             </div>
-                        </div>
                     </div>
                     <!-- chatbox -->
 

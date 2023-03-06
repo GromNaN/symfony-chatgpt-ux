@@ -50,7 +50,7 @@ class ChatController
         $form->handleRequest($request);
 
         if (!$form->isSubmitted() || !$form->isValid()) {
-            return new Response('Invalid form', Response::HTTP_BAD_REQUEST);
+            return new Response('Invalid form', Response::HTTP_UNPROCESSABLE_ENTITY);
         }
 
         /** @var MessageInput $messageInput */

@@ -2,7 +2,7 @@
     <div class="chat-header">
         <div class="msg-search">
             <input type="text" class="form-control" id="inlineFormInputGroup" placeholder="Search" aria-label="search" data-model="query">
-            <a class="add" href="{{ path('index') }}"><img class="img-fluid" src="https://mehedihtml.com/chatbox/assets/img/add.svg" alt="add"></a>
+            <a class="add" href="{{ path('index') }}" data-turbo-action="replace" data-turbo-frame="chatbox"><img class="img-fluid" src="https://mehedihtml.com/chatbox/assets/img/add.svg" alt="add"></a>
         </div>
     </div>
 
@@ -13,7 +13,7 @@
                 <div class="tab-pane fade show active" id="Open" role="tabpanel" aria-labelledby="Open-tab">
                     <div class="chat-list">
                         {% for conversation in this.conversations %}
-                            <a href="{{ path('conversation', { id: conversation.id }) }}" class="d-flex align-items-center" data-loading="addClass(opacity-50)">
+                            <a href="{{ path('conversation', { id: conversation.id }) }}" class="d-flex align-items-center" data-loading="addClass(opacity-50)" data-turbo-action="replace" data-turbo-frame="chatbox">
                                 <div class="flex-shrink-0">
                                     <img class="img-fluid" src="https://upload.wikimedia.org/wikipedia/commons/0/04/ChatGPT_logo.svg" width="45" height="45" alt="user img">
                                     <!--<span class="active"></span>-->
