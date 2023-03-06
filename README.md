@@ -11,6 +11,10 @@ If you want to try it, you need to create an account on [OpenAI](https://beta.op
 
 **Contributions are welcome to improve the code and the UX.**
 
+## Screenshots
+
+<img width="1317" alt="screenshot" src="https://user-images.githubusercontent.com/400034/222999892-69957a41-acc6-49ac-9dd1-b2de8a89105c.png">
+
 ## Installation
 
 Clone the repository and install the dependencies:

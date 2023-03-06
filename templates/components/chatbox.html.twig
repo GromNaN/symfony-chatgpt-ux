@@ -56,7 +56,7 @@
         </div>
 
         <div class="send-box">
-            <form action="{{ path('submit') }}" method="post" data-turbo-frame="chatbox" data-turbo-action="replace">
+            <form action="{{ path('submit') }}" method="post" data-turbo-frame="{{ this.conversation.isNew() ? 'container' : 'chatbox' }}" data-turbo-action="replace">
                 {{ form_widget(this.form.message) }}
                 {{ form_widget(this.form.id) }}
                 {# @todo would be nice to be able to add an icon. See https://stackoverflow.com/a/31275381/450789 #}
