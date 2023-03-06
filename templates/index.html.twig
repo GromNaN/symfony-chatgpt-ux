@@ -2,7 +2,6 @@
 
 {# @link https://www.bootdey.com/snippets/view/chat-app #}
 {% block body %}
-
     <!-- char-area -->
     <section class="message-area">
         <div class="container">
@@ -20,55 +19,7 @@
                         <!-- chatbox -->
                         <div class="chatbox">
                             <div class="modal-dialog-scrollable">
-                                <div class="modal-content">
-                                    <div class="msg-head">
-                                        <div class="row">
-                                            <div class="col-8">
-                                                <div class="d-flex align-items-center">
-                                                    <span class="chat-icon"><img class="img-fluid" src="https://mehedihtml.com/chatbox/assets/img/arroleftt.svg" alt="image title"></span>
-                                                    <div class="flex-shrink-0">
-                                                        <img class="img-fluid" src="https://upload.wikimedia.org/wikipedia/commons/0/04/ChatGPT_logo.svg" alt="OpenAI" width="45" height="45">
-                                                    </div>
-                                                    <div class="flex-grow-1 ms-3">
-                                                        <h3><h3>{{ conversation.title }}</h3></h3>
-                                                        <p>OpenAI assistant</p>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="col-4">
-                                                <ul class="moreoption">
-                                                    <li class="navbar nav-item dropdown">
-                                                        <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false"><i class="fa fa-ellipsis-v" aria-hidden="true"></i></a>
-                                                        <ul class="dropdown-menu">
-                                                            <li><a class="dropdown-item" href="#">Action</a></li>
-                                                            <li><a class="dropdown-item" href="#">Another action</a></li>
-                                                            <li>
-                                                                <hr class="dropdown-divider">
-                                                            </li>
-                                                            <li><a class="dropdown-item" href="#">Something else here</a></li>
-                                                        </ul>
-                                                    </li>
-                                                </ul>
-                                            </div>
-                                        </div>
-                                    </div>
-
-
-                                    <div class="modal-body">
-                                        <div class="msg-body">
-                                            {{ component('chat_messages', { messages: conversation.messages.toArray() }) }}
-                                        </div>
-                                    </div>
-
-                                    <div class="send-box">
-                                        <form action="{{ path('submit') }}" method="post">
-                                            {{ form_widget(form.message) }}
-                                            {{ form_widget(form.id) }}
-                                            {# @todo would be nice to be able to add an icon. See https://stackoverflow.com/a/31275381/450789 #}
-                                            <button type="submit"><i class="fa fa-paper-plane" aria-hidden="true"></i> Send</button>
-                                        </form>
-                                    </div>
-                                </div>
+                                {{ component('chatbox', { class: 'modal-content', id }) }}
                             </div>
                         </div>
                     </div>

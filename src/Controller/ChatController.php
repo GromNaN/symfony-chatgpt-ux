@@ -4,6 +4,8 @@ namespace App\Controller;
 
 use App\Document\Conversation;
 use App\Document\Message;
+use App\Form\Model\MessageInput;
+use App\Form\Type\MessageInputType;
 use Doctrine\ODM\MongoDB\DocumentManager;
 use OpenAI\Client;
 use Psr\Clock\ClockInterface;
@@ -36,31 +38,29 @@ class ChatController
     #[Template('index.html.twig')]
     public function indexAction(string $id = null): array
     {
-        $conversation = $this->getConversation($id);
-
         return [
-            'form' => $this->getForm()->setData(['id' => $id])->createView(),
-            'conversation' => $conversation,
+            'id' => $id,
         ];
     }
 
     #[Route('/', methods: 'POST', name: 'submit')]
     public function submitAction(Request $request): Response
     {
-        $form = $this->getForm();
+        $form = $this->formFactory->create(MessageInputType::class);
         $form->handleRequest($request);
 
         if (!$form->isSubmitted() || !$form->isValid()) {
-            return new RedirectResponse('/');
+            return new Response('Invalid form', Response::HTTP_BAD_REQUEST);
         }
-        /** @var array{id: string, message: string} $data */
-        $data = $form->getData();
+
+        /** @var MessageInput $messageInput */
+        $messageInput = $form->getData();
 
         // Gets the conversation from the session
-        $conversation = $this->getConversation($data['id']);
+        $conversation = $this->getConversation($messageInput->id);
 
         // Adds the user's message to the conversation
-        $conversation->addMessage('user', $data['message'], $this->clock->now());
+        $conversation->addMessage('user', $messageInput->message, $this->clock->now());
 
         // Generates a response from OpenAI
         $response = $this->openai->chat()->create([
@@ -106,23 +106,5 @@ class ChatController
         }
 
         return $conversation;
-    }
-
-    private function getForm(): FormInterface
-    {
-        return $this->formFactory->createBuilder()
-            ->add('id', HiddenType::class)
-            ->add('message', TextType::class, [
-                'label' => false,
-                'attr' => [
-                    'placeholder' => 'Write your message…',
-                    'autocomplete' => 'off',
-                    'aria-label' => 'message',
-                ],
-            ])
-            ->add('submit', SubmitType::class, [
-                'label' => 'Send',
-            ])
-            ->getForm();
     }
 }
