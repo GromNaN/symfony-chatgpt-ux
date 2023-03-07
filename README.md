@@ -1,7 +1,7 @@
 # Draft of ChatGPT clone with OpenAI API, Symfony UX and MongoDB
 
 This is a demo application that uses the [Symfony UX](https://symfony.com/doc/current/ux.html) library to build a clone
-of [ChatGPT](https://chatgpt.com/). We use the [OpenAI API](https://beta.openai.com/) to generate the responses and
+of [ChatGPT](https://openai.com/blog/chatgpt). We use the [OpenAI API](https://beta.openai.com/) to generate the responses and
 [MongoDB](https://www.mongodb.com/) to store the conversations.
 
 This is a weekend project, so don't expect too much. The code is not production-ready and the UX is not perfect. I would
