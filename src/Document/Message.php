@@ -2,7 +2,6 @@
 
 namespace App\Document;
 
-use DateTimeImmutable;
 use Doctrine\ODM\MongoDB\Mapping\Annotations\EmbeddedDocument;
 use Doctrine\ODM\MongoDB\Mapping\Annotations\Field;
 
@@ -16,9 +15,9 @@ class Message
     private string $content;
 
     #[Field]
-    private DateTimeImmutable $timestamp;
+    private \DateTimeImmutable $timestamp;
 
-    public function __construct(string $role, string $content, DateTimeImmutable $timestamp)
+    public function __construct(string $role, string $content, \DateTimeImmutable $timestamp)
     {
         $this->role = $role;
         $this->content = $content;
@@ -35,7 +34,7 @@ class Message
         return $this->content;
     }
 
-    public function getTimestamp(): DateTimeImmutable
+    public function getTimestamp(): \DateTimeImmutable
     {
         return $this->timestamp;
     }

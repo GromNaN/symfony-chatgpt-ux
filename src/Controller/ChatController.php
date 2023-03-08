@@ -10,11 +10,7 @@ use Doctrine\ODM\MongoDB\DocumentManager;
 use OpenAI\Client;
 use Psr\Clock\ClockInterface;
 use Symfony\Bridge\Twig\Attribute\Template;
-use Symfony\Component\Form\Extension\Core\Type\HiddenType;
-use Symfony\Component\Form\Extension\Core\Type\SubmitType;
-use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\FormFactoryInterface;
-use Symfony\Component\Form\FormInterface;
 use Symfony\Component\HttpFoundation\RedirectResponse;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -29,8 +25,7 @@ class ChatController
         private readonly ClockInterface $clock,
         private readonly DocumentManager $documentManager,
         private readonly FormFactoryInterface $formFactory,
-    )
-    {
+    ) {
     }
 
     #[Route('/', methods: 'GET', name: 'index')]

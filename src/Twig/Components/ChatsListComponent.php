@@ -19,12 +19,12 @@ final class ChatsListComponent
 
     public function __construct(
         private readonly DocumentManager $documentManager,
-    )
-    {
+    ) {
     }
 
     /**
      * @return array{title: string, createdAt: \DateTimeImmutable, id: string}[]
+     *
      * @todo project only the fields we need, not the whole document with all messages
      *       also use the atlas search for fuzzy search https://www.mongodb.com/docs/atlas/atlas-search/text/#fuzzy-examples
      */

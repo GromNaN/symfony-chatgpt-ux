@@ -19,10 +19,9 @@ final class ChatboxComponent
     public Conversation $conversation;
 
     public function __construct(
-        private readonly DocumentManager      $documentManager,
+        private readonly DocumentManager $documentManager,
         private readonly FormFactoryInterface $formFactory,
-    )
-    {
+    ) {
     }
 
     public function mount(

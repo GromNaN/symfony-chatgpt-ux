@@ -2,7 +2,6 @@
 
 namespace App\Document;
 
-use DateTimeImmutable;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ODM\MongoDB\Mapping\Annotations\Document;
@@ -26,11 +25,11 @@ class Conversation
     private ?string $title = 'New conversation';
 
     #[Field]
-    private DateTimeImmutable $createdAt;
+    private \DateTimeImmutable $createdAt;
 
     public function __construct(\DateTimeImmutable $createdAt = null)
     {
-        $this->createdAt = $createdAt ?? new DateTimeImmutable();
+        $this->createdAt = $createdAt ?? new \DateTimeImmutable();
         $this->messages = new ArrayCollection();
         $this->addMessage('system', 'You are SymfonyGPT - A ChatGPT clone. Answer as concisely as possible.', $this->createdAt);
     }
@@ -50,7 +49,7 @@ class Conversation
         return $this->messages;
     }
 
-    public function addMessage(string $role, string $content, DateTimeImmutable $timestamp): void
+    public function addMessage(string $role, string $content, \DateTimeImmutable $timestamp): void
     {
         $this->messages->add(new Message($role, $content, $timestamp));
     }
@@ -65,7 +64,7 @@ class Conversation
         $this->title = $title;
     }
 
-    public function getCreatedAt(): DateTimeImmutable
+    public function getCreatedAt(): \DateTimeImmutable
     {
         return $this->createdAt;
     }
