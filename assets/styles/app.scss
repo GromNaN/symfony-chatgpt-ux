@@ -245,7 +245,7 @@ a.add img {
     transform: rotate(-37deg);
 }
 
-.msg-body ul li.role-user p {
+.msg-body ul li.role-user section {
     color: #000;
     font-size: 14px;
     line-height: 1.5;
@@ -259,7 +259,7 @@ a.add img {
     margin-bottom: 0;
 }
 
-.msg-body ul li.role-user p b {
+.msg-body ul li.role-user section b {
     display: block;
     color: #180660;
     font-size: 14px;
@@ -290,7 +290,7 @@ a.add img {
     transform: rotate(37deg);
 }
 
-.msg-body ul li.role-assistant p {
+.msg-body ul li.role-assistant section {
     color: #fff;
     font-size: 14px;
     line-height: 1.5;
@@ -305,7 +305,7 @@ a.add img {
     width: 100%;
 }
 
-.msg-body ul li.role-assistant p b {
+.msg-body ul li.role-assistant section b {
     display: block;
     color: #061061;
     font-size: 14px;
@@ -557,14 +557,14 @@ button:focus {
     .chat-list p {
         font-size: 12px;
     }
-    .msg-body ul li.role-user p {
+    .msg-body ul li.role-user section {
         font-size: 13px;
         padding: 8px;
         border-bottom-left-radius: 6px;
         border-top-right-radius: 6px;
         border-bottom-right-radius: 6px;
     }
-    .msg-body ul li.role-assistant p {
+    .msg-body ul li.role-assistant section {
         font-size: 13px;
         padding: 8px;
         border-top-left-radius: 6px;
