@@ -3,6 +3,7 @@
 namespace App\Twig\Components;
 
 use App\Document\Conversation;
+use App\MongoDB\Aggregation\Stage\Search;
 use Doctrine\ODM\MongoDB\DocumentManager;
 use MongoDB\BSON\Regex;
 use Symfony\UX\LiveComponent\Attribute\AsLiveComponent;
@@ -19,8 +20,8 @@ final class ChatsListComponent
 
     public function __construct(
         private readonly DocumentManager $documentManager,
-    )
-    {
+        private readonly bool $useAtlasSearch = false,
+    ) {
     }
 
     /**
@@ -30,12 +31,30 @@ final class ChatsListComponent
      */
     public function getConversations(): iterable
     {
-        return $this->documentManager->getRepository(Conversation::class)
-            ->createQueryBuilder()
-            ->field('title')->equals(new Regex($this->query ?? '', 'i'))
+        if (strlen($this->query) < 2 || !$this->useAtlasSearch) {
+            return $this->documentManager->getRepository(Conversation::class)
+                ->createQueryBuilder()
+                ->field('title')->equals(new Regex($this->query ?? '', 'i'))
+                ->sort('createdAt', 'desc')
+                ->limit(20)
+                ->getQuery()
+                ->execute();
+        }
+
+        // Use Atlas Search for fuzzy search
+        // The operator is not supported by the ODM, so we use the aggregation builder
+        $aggBuilder = $this->documentManager->createAggregationBuilder(Conversation::class);
+        $aggBuilder->hydrate(Conversation::class);
+        $search = new Search($aggBuilder, $this->query, 'title');
+        $search->index('autocomplete');
+        $aggBuilder
+            ->addStage($search)
             ->sort('createdAt', 'desc')
-            ->limit(20)
-            ->getQuery()
-            ->execute();
+            ->project()
+                ->field('id')->expression('$_id')
+                ->includeFields(['title', 'createdAt'])
+            ->limit(20);
+
+        return $aggBuilder->getAggregation();
     }
 }
