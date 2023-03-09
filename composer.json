@@ -10,7 +10,7 @@
         "ext-mongodb": "*",
         "doctrine/mongodb-odm-bundle": "^4.5",
         "league/commonmark": "^2.3",
-        "openai-php/symfony": "dev-main",
+        "openai-php/symfony": "^v0.3.5",
         "symfony/clock": "6.2.*",
         "symfony/console": "6.2.*",
         "symfony/dotenv": "6.2.*",

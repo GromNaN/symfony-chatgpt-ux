@@ -21,6 +21,15 @@
             "src/Document/.gitignore"
         ]
     },
+    "openai-php/symfony": {
+        "version": "0.3",
+        "recipe": {
+            "repo": "github.com/symfony/recipes-contrib",
+            "branch": "main",
+            "version": "0.3",
+            "ref": "23b35dfd25adb2c5c467a50239a9ef0aa16f9328"
+        }
+    },
     "symfony/console": {
         "version": "6.2",
         "recipe": {
